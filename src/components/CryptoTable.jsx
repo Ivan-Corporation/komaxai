@@ -41,7 +41,6 @@ const transactionsDataMOCK = [
 ]
 
 
-console.log('transactionsDataMOCK', transactionsDataMOCK)
 
 
 const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
@@ -49,6 +48,7 @@ const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-di
 function CryptoTable({ transactionsData }) {
 
 
+    console.log('transactionsData', transactionsData)
 
 
 
@@ -68,7 +68,7 @@ function CryptoTable({ transactionsData }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {transactionsDataMOCK?.map((el, i) => (
+                    {transactionsData?.map((el, i) => (
                         <tr key={i}>
                             <td>{el.Block.Number}</td>
                             <td>
@@ -106,6 +106,7 @@ function CryptoTable({ transactionsData }) {
                                 </div>
                             </td>
                             <td>
+                                Hash: <a href={`https://arbiscan.io/tx/${el.Transaction.Hash}`}><span className="badge badge-primary badge-sm">{el.Transaction.Hash}</span></a><br />
                                 From: <a href={`https://arbiscan.io/address/${el.Transaction.From}`}><span className="badge badge-ghost badge-sm">{el.Transaction.From}</span></a><br />
                                 To: <a href={`https://arbiscan.io/address/${el.Transaction.To}`}><span className="badge badge-ghost badge-sm">{el.Transaction.To}</span></a>
                             </td>
